@@ -1,0 +1,33 @@
+# TO DO LIST/.gitignore (or VortexKeep/.gitignore)
+
+# Node.js / Express Backend
+/backend/node_modules/
+/backend/npm-debug.log*
+/backend/.env # Important: keep environment variables out of git!
+/backend/dist/ # If your backend builds anything to a dist folder
+
+# Angular Frontend (MyApp)
+/frontend/my-app/node_modules/
+/frontend/my-app/dist/
+/frontend/my-app/src/environments/*.ts # Or whatever your environment files are called if they differ per deploy
+/frontend/my-app/.angular/
+/frontend/my-app/.vscode/ # Can include this if you want to keep editor settings out
+/frontend/my-app/npm-debug.log*
+
+# OS and Editor Specific
+.DS_Store
+.vscode/ # If you have root .vscode settings you want to ignore
+*.swp
+Thumbs.db
+.idea/ # For WebStorm/IntelliJ
+
+# Logs
+*.log
+log/
+logs/
+
+# Local configuration files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
