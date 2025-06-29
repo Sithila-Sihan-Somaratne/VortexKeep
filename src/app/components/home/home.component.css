@@ -1,0 +1,81 @@
+.vortexkeep-home-hero {
+    background-color: var(--vortexkeep-dominant-dark);
+    /* Adjust this padding as needed once your image is in place.
+       Start with a smaller value like 4rem if the space below text is too large. */
+    padding: 6rem 0; 
+    min-height: calc(100vh - var(--vortexkeep-header-height, 60px) - var(--vortexkeep-footer-height, 100px));
+    width: 100%;
+    flex-grow: 1; /* Ensures the hero section takes all available space and pushes footer down */
+    /* If you're not using d-flex align-items-center on the container,
+       the text-align: center needs to be on the column or container itself */
+}
+
+/* Style for the Primary Call-to-Action button in the hero */
+.btn-hero-cta {
+    background-color: var(--vortexkeep-accent-bright);
+    color: var(--vortexkeep-primary-text);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.375rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn-hero-cta:hover {
+    background-color: #6acd00; /* Slightly darker green for hover effect */
+}
+
+/* Style for the Secondary Call-to-Action button (Outline Light) */
+.btn-outline-light {
+    padding: 1rem 2rem; /* Ensure consistent padding with primary button */
+    background-color: var(--vortexkeep-dominant-dark) !important;
+    color: var(--vortexkeep-text-on-dark) !important; /* White text */
+    border-color: var(--vortexkeep-text-on-dark) !important; /* White border */
+
+    display: flex; /* Use flexbox for perfect text centering */
+    align-items: center; /* Vertically centers text */
+    justify-content: center; /* Horizontally centers text */
+    
+    font-size: 1.25rem; /* Match primary button's font size */
+    font-weight: 600; /* Match primary button's font weight */
+
+    transition: all 0.3s ease; /* Smooth transition for hover */
+}
+
+.btn-outline-light:hover {
+    background-color: var(--vortexkeep-accent-bright) !important; /* Green background on hover */
+    color: var(--vortexkeep-primary-text) !important; /* Dark text on green background */
+    border-color: var(--vortexkeep-accent-bright) !important; /* Green border on hover */
+}
+
+/* Headline and Subtitle colors for the hero section */
+.vortexkeep-home-hero h1,
+.vortexkeep-home-hero h2 {
+    color: var(--vortexkeep-text-on-dark); /* Set to white/light for strong contrast */
+}
+
+/* Main paragraph text color for the hero section */
+.vortexkeep-home-hero p {
+    color: var(--vortexkeep-text-on-dark); /* Ensure paragraph is also white/light */
+    font-size: 1.25rem; /* Example: large font size for readability */
+    line-height: 1.6; /* Good line height for paragraphs */
+}
+
+/* Optional: Adjust heading font sizes if needed */
+.vortexkeep-home-hero h1 {
+    font-size: 3.5rem; /* Example: adjust primary headline size */
+    margin-bottom: 1.5rem;
+}
+
+/* Specific styling for the image in the hero, if it loads */
+.vortexkeep-home-hero .hero-image { /* Assuming you add class="hero-image" to your <img> */
+    border-radius: 0.5rem; /* Slightly rounded corners for the image */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.vortexkeep-home-hero h2 .brand-name-text {
+    color: var(--vortexkeep-accent-bright); /* Make VortexKeep green in the subtitle */
+    /* Optional: Add font-weight or other styles */
+    font-weight: 700;
+}

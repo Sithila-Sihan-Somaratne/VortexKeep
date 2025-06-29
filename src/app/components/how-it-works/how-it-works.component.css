@@ -1,0 +1,36 @@
+.how-it-works-section {
+    padding-top: 5rem; /* Space from header */
+    padding-bottom: 5rem; /* Space above footer */
+    color: var(--vortexkeep-primary-text); /* Default text color, likely a dark grey/black */
+    background-color: var(--vortexkeep-background-light); /* Or white, if that's your light background */
+}
+
+/* Main Page Heading (h1) */
+.how-it-works-section h1 {
+    color: var(--vortexkeep-dominant-dark); /* Dark color for headings on light background */
+    margin-bottom: 2.5rem; /* More space below main heading */
+    font-size: 2.75rem; /* Slightly smaller than hero h1 */
+}
+
+/* Sub-headings (h2, h3, h4) for steps/benefits */
+.how-it-works-section h2,
+.how-it-works-section h3,
+.how-it-works-section h4 {
+    color: var(--vortexkeep-dominant-dark); /* Dark color for headings on light background */
+    margin-bottom: 1rem;
+}
+
+/* Lead paragraphs */
+.how-it-works-section p.lead {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+/* Styling for images/illustrations in the sections */
+.how-it-works-section img {
+    border-radius: 0.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    max-width: 100%; /* Ensure responsiveness */
+    height: auto; /* Maintain aspect ratio */
+}

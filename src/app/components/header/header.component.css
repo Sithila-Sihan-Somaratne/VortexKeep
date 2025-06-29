@@ -1,0 +1,58 @@
+.vortexkeep-header {
+    background-color: var(--vortexkeep-secondary-text) !important; /* Header background changed to medium-dark grey */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for lift */
+    z-index: 1020; /* Ensures header is above other content */
+    padding-top: 0.5rem; /* Adjust padding as needed */
+    padding-bottom: 0.5rem; /* Adjust padding as needed */
+}
+
+/* Navbar Brand (Logo and Name) */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    color: var(--vortexkeep-accent-bright); /* Brand name color if it's text */
+    font-weight: 700;
+}
+
+.navbar-brand img {
+    height: 35px; /* Adjust logo height as needed for visibility in header */
+    margin-right: 0.5rem;
+}
+
+/* Navbar Toggler (for mobile menu) */
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1); /* Light border for toggler on dark background */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Navbar Navigation Links */
+.navbar-nav .nav-link {
+    color: var(--vortexkeep-accent-bright); /* Green for visibility on medium-dark grey */
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+    padding-left: 1rem; /* Spacing between links */
+    padding-right: 1rem; /* Spacing between links */
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--vortexkeep-text-on-dark); /* White on hover/active for contrast */
+}
+
+/* Call to Action Button in Header */
+.btn-try-vortexkeep {
+    background-color: var(--vortexkeep-accent-bright) !important; /* Bright green button */
+    color: var(--vortexkeep-primary-text) !important; /* Dark text on green button */
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn-try-vortexkeep:hover {
+    background-color: #6acd00 !important; /* Slightly darker green on hover */
+}

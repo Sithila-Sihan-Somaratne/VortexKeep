@@ -1,0 +1,68 @@
+/* Main section styling */
+.try-vortexkeep-section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    color: var(--vortexkeep-primary-text);
+    background-color: var(--vortexkeep-background-light);
+}
+
+/* Heading styles */
+.try-vortexkeep-section h1 { /* This targets h1 specifically for the section title */
+    color: var(--vortexkeep-dominant-dark);
+    margin-bottom: 2.5rem;
+    font-size: 2.75rem; /* Matches your HTML's display-4 but keeps explicit size */
+}
+
+.try-vortexkeep-section h3 { /* This targets h3 for "What You'll Gain" and "Getting Started is Simple" */
+    color: var(--vortexkeep-dominant-dark);
+    font-size: 1.5rem; /* Matches your HTML's h5 but keeps explicit size */
+    margin-bottom: 1rem; /* Added or adjusted for spacing below sub-headings */
+}
+
+/* Lead paragraph styling */
+.try-vortexkeep-section p.lead {
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+/* Call to action area styling */
+.launch-cta-area {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+/* NEW: Styles for the custom numbered circles in "Getting Started is Simple" */
+.step-circle {
+    width: 28px; /* Size of the circle */
+    height: 28px; /* Size of the circle */
+    min-width: 28px; /* Prevents the circle from shrinking in a flex container */
+    border-radius: 50%; /* Makes it a perfect circle */
+    background-color: var(--vortexkeep-dominant-dark); 
+    color: var(--vortexkeep-text-on-dark); 
+    font-size: 0.9rem; /* Size of the number */
+    font-weight: 700; /* Bold number */
+    display: flex; /* Use flexbox for perfect centering of the number inside the circle */
+    align-items: center; /* Vertically center the number */
+    justify-content: center; /* Horizontally center the number */
+    flex-shrink: 0; /* Ensures the circle doesn't shrink when text is long */
+    line-height: 1; /* Helps with precise vertical centering of the number */
+}
+
+
+.try-vortexkeep-section ul .text-success {
+    /* Set color explicitly, using !important if necessary to override Bootstrap's default .text-success */
+    color: var(--vortexkeep-dominant-dark) !important; 
+    font-size: 1.25rem; /* Ensure consistent icon size */
+}
+
+/* General link styling within the section */
+.try-vortexkeep-section a {
+    color: var(--vortexkeep-accent-bright);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.try-vortexkeep-section a:hover {
+    color: #6acd00; /* A slightly darker shade of your accent color for hover */
+    text-decoration: underline;
+}

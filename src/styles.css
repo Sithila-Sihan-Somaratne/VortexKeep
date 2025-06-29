@@ -1,1 +1,132 @@
-/* You can add global styles to this file, and also import other style files */
+html, body {
+    height: 100%; /* Ensures HTML and body take full viewport height */
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+app-root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: var(--vortexkeep-header-height); /* This is the key change */
+}
+
+/* --- VortexKeep Brand Colors --- */
+:root {
+    --vortexkeep-dominant-dark: #1B263B;
+    --vortexkeep-accent-bright: #7FFF00;
+    --vortexkeep-light-background: #F8F8F8;
+    --vortexkeep-secondary-background: #ECECEC;
+    --vortexkeep-primary-text: #333333;
+    --vortexkeep-secondary-text: #666666;
+    --vortexkeep-text-on-dark: #F0F0F0;
+    --vortexkeep-header-height: 60px;
+    --vortexkeep-footer-height: 100px;
+}
+
+/* --- Bootstrap Overrides --- */
+.bg-dark {
+    background-color: var(--vortexkeep-dominant-dark) !important; 
+}
+
+.btn-primary {
+    background-color: var(--vortexkeep-accent-bright);
+    border-color: var(--vortexkeep-accent-bright);
+    color: var(--vortexkeep-primary-text);
+}
+
+.btn-primary:hover {
+    background-color: #6acd00;
+    border-color: #6acd00;
+    color: var(--vortexkeep-primary-text);
+}
+
+.btn-primary:focus {
+    box-shadow: 0 0 0 0.25rem rgba(var(--vortexkeep-accent-bright), .5);
+}
+
+/* Global link text-decoration reset */
+a{
+    text-decoration: none !important;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* --- GLOBAL BUTTON STYLES (now centralized here) --- */
+.btn-hero-cta {
+    background-color: var(--vortexkeep-accent-bright) !important;
+    color: var(--vortexkeep-primary-text) !important;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.375rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-hero-cta:hover {
+    background-color: #6acd00 !important;
+    color: var(--vortexkeep-primary-text-hover, #ffffff) !important;
+}
+
+.btn-outline-light {
+    padding: 1rem 2rem;
+    background-color: var(--vortexkeep-text-on-dark);
+    color: var(--vortexkeep-dominant-dark) !important;
+    border-color: var(--vortexkeep-dominant-dark) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+    background-color: var(--vortexkeep-dominant-dark) !important;
+    color: var(--vortexkeep-text-on-dark) !important;
+    border-color: var(--vortexkeep-dominant-dark) !important;
+}
+
+/* Specific styling for the image in the hero, if it loads */
+.vortexkeep-home-hero .hero-image {
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.vortexkeep-home-hero h2 .brand-name-text {
+    color: var(--vortexkeep-accent-bright);
+    font-weight: 700;
+}
+
+/* Hero Section specific styles (These are usually specific enough to remain here) */
+.vortexkeep-home-hero {
+    background-color: var(--vortexkeep-dominant-dark);
+    padding: 6rem 0; 
+    min-height: calc(100vh - var(--vortexkeep-header-height, 60px) - var(--vortexkeep-footer-height, 100px));
+    width: 100%;
+    flex-grow: 1;
+}
+
+.vortexkeep-home-hero h1,
+.vortexkeep-home-hero h2 {
+    color: var(--vortexkeep-text-on-dark);
+}
+
+.vortexkeep-home-hero p {
+    color: var(--vortexkeep-text-on-dark);
+    font-size: 1.25rem;
+    line-height: 1.6;
+}
+
+.vortexkeep-home-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+}

@@ -1,0 +1,90 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="authModalTitle">
+    {{ activeTab === 'signup' ? 'Join VortexKeep' : 'Welcome Back!' }}
+  </h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+
+<div class="modal-body">
+  <ul ngbNav [(activeId)]="activeTab" class="nav-tabs justify-content-center mb-3" #nav="ngbNav">
+    <li [ngbNavItem]="'signup'">
+      <a ngbNavLink>Sign Up</a>
+      <ng-template ngbNavContent>
+        <div class="py-3">
+          <form [formGroup]="signupForm" (ngSubmit)="onSignupSubmit()">
+            <div class="mb-3">
+              <label for="signupEmail" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="signupEmail" formControlName="email" aria-describedby="signupEmailHelp">
+              <div *ngIf="signupForm.get('email')?.invalid && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)" class="text-danger mt-1">
+                <div *ngIf="signupForm.get('email')?.errors?.['required']">Email is required.</div>
+                <div *ngIf="signupForm.get('email')?.errors?.['email']">Please enter a valid email address.</div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="signupPassword" class="form-label">Password</label>
+              <div class="input-group">
+                <input [type]="passwordVisible ? 'text' : 'password'" class="form-control" id="signupPassword" formControlName="password">
+                <button class="btn btn-outline-secondary" type="button" (click)="togglePasswordVisibility()">
+                  <fa-icon [icon]="passwordVisible ? faEyeSlash : faEye"></fa-icon>
+                </button>
+              </div>
+              <div *ngIf="signupForm.get('password')?.invalid && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched)" class="text-danger mt-1">
+                <div *ngIf="signupForm.get('password')?.errors?.['required']">Password is required.</div>
+                <div *ngIf="signupForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters long.</div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label">Confirm Password</label>
+              <input [type]="passwordVisible ? 'text' : 'password'" class="form-control" id="confirmPassword" formControlName="confirmPassword">
+              <div *ngIf="signupForm.get('confirmPassword')?.invalid && (signupForm.get('confirmPassword')?.dirty || signupForm.get('confirmPassword')?.touched)" class="text-danger mt-1">
+                <div *ngIf="signupForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required.</div>
+              </div>
+              <div *ngIf="signupForm.errors?.['mismatch'] && (signupForm.get('confirmPassword')?.dirty || signupForm.get('confirmPassword')?.touched)" class="text-danger mt-1">
+                Passwords do not match.
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100" [disabled]="signupForm.invalid">Sign Up</button>
+            <p class="text-center mt-3 mb-0 text-muted small">Already have an account? <a href="javascript:void(0)" (click)="selectTab('login')">Login here</a></p>
+          </form>
+        </div>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="'login'">
+      <a ngbNavLink>Login</a>
+      <ng-template ngbNavContent>
+        <div class="py-3">
+          <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+            <div class="mb-3">
+              <label for="loginEmail" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="loginEmail" formControlName="email">
+              <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)" class="text-danger mt-1">
+                <div *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</div>
+                <div *ngIf="loginForm.get('email')?.errors?.['email']">Please enter a valid email address.</div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="loginPassword" class="form-label">Password</label>
+              <div class="input-group">
+                <input [type]="passwordVisible ? 'text' : 'password'" class="form-control" id="loginPassword" formControlName="password">
+                <button class="btn btn-outline-secondary" type="button" (click)="togglePasswordVisibility()">
+                  <fa-icon [icon]="passwordVisible ? faEyeSlash : faEye"></fa-icon>
+                </button>
+              </div>
+              <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" class="text-danger mt-1">
+                <div *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">Login</button>
+            <p class="text-center mt-3 mb-0 text-muted small">Don't have an account? <a href="javascript:void(0)" (click)="selectTab('signup')">Sign up here</a></p>
+            <p class="text-center mt-2 mb-0 text-muted small"><a href="javascript:void(0)">Forgot Password?</a></p>
+          </form>
+        </div>
+      </ng-template>
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>
+
+<div class="modal-footer">
+  <p class="text-muted small">By continuing, you agree to our Terms and Conditions.</p>
+</div>

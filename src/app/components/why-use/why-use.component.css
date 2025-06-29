@@ -1,0 +1,39 @@
+.why-use-section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    background-color: var(--vortexkeep-background-dark); /* Example: If you have a dark section */
+    color: var(--vortexkeep-secondary-text); /* Adjust text color for dark background */
+}
+
+.why-use-section h1 {
+    color: var(--vortexkeep-dominant-dark); /* Or --vortexkeep-secondary-text if on dark background */
+    margin-bottom: 2.5rem;
+    font-size: 2.75rem;
+}
+
+.why-use-section h2 {
+    color: var(--vortexkeep-dominant-dark); /* Or --vortexkeep-secondary-text if on dark background */
+    font-size: 1.5rem;
+}
+
+.why-use-section p.lead {
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+.why-use-section .col-md-2 fa-icon {
+    font-size: 3rem;
+    /* Set color explicitly, using !important if necessary to override Bootstrap's default .text-success */
+    color: var(--vortexkeep-dominant-dark) !important; 
+}
+
+.why-use-section a {
+    color: var(--vortexkeep-accent-bright);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.why-use-section a:hover {
+    color: #6acd00;
+    text-decoration: underline;
+}

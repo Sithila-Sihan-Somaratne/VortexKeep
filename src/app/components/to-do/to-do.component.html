@@ -1,0 +1,55 @@
+<div class="try-vortexkeep-section container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+            <h1 class="display-4 fw-bold mb-4">Start Your VortexKeep Journey Today!</h1>
+            <p class="lead mb-5">
+                Ready to transform your daily chaos into streamlined success? VortexKeep makes it incredibly easy to get
+                started. Dive in and experience true clarity and control, right now.
+            </p>
+
+            <div class="launch-cta-area mb-5">
+                <a class="btn btn-hero-cta btn-lg fw-bold d-block mx-auto mb-3"
+                   style="max-width: 300px; cursor: pointer;"
+                   (click)="openAuthModal('signup')"> <!-- <-- UPDATED HERE -->
+                    Launch VortexKeep App
+                </a>
+                <p class="text-muted small">No credit card required to get started!</p>
+            </div>
+            
+            <div class="row justify-content-center text-start">
+                <div class="col-md-6 mb-4">
+                    <h3 class="h5 fw-bold mb-3">What You'll Gain:</h3>
+                    <ul class="list-unstyled text-start">
+                        <li class="d-flex align-items-center mb-2"><fa-icon [icon]="['fas', 'check-circle']"
+                                class="text-success me-2 mt-1"></fa-icon> Unified organization for tasks & notes</li>
+                        <li class="d-flex align-items-center mb-2"><fa-icon [icon]="['fas', 'check-circle']"
+                                class="text-success me-2 mt-1"></fa-icon> Enhanced focus with smart prioritization</li>
+                        <li class="d-flex align-items-center mb-2"><fa-icon [icon]="['fas', 'check-circle']"
+                                class="text-success me-2 mt-1"></fa-icon> Peace of mind with robust data security</li>
+                        <li class="d-flex align-items-center"><fa-icon [icon]="['fas', 'check-circle']"
+                                class="text-success me-2 mt-1"></fa-icon> The power to master your day, every day</li>
+                    </ul>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <h3 class="h5 fw-bold mb-3">Getting Started is Simple:</h3>
+                    <ol class="list-unstyled text-center">
+                        <li class="d-flex align-items-center mb-2">
+                            <span class="step-circle me-2 mt-1">1</span> <span>Click "Launch VortexKeep App"</span>
+                        </li>
+                        <li class="d-flex align-items-center mb-2">
+                            <span class="step-circle me-2 mt-1">2</span> <span>Create your free account</span>
+                        </li>
+                        <li class="d-flex align-items-center mb-2">
+                            <span class="step-circle me-2 mt-1">3</span> <span>Start organizing your world!</span>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <p class="mt-5">
+                Have questions before you begin? <a routerLink="/contact" class="text-success fw-bold">Contact our
+                    support team.</a>
+            </p>
+        </div>
+    </div>
+</div>

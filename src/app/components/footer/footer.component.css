@@ -1,0 +1,53 @@
+.vortexkeep-footer {
+    background-color: var(--vortexkeep-secondary-text); /* Footer background changed to very light grey */
+    color: var(--vortexkeep-text-on-dark); /* Default text color for copyright, etc. */
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow pointing upwards */
+    position: relative; /* Ensures shadow is visible */
+    z-index: 10; /* Ensures footer is above other content, if any overlap */
+}
+
+/* Adjust general text within footer if specific elements don't pick up default color */
+.vortexkeep-footer p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 0; /* Remove default paragraph margin if unwanted */
+}
+
+/* Footer Image (Logo) */
+.vortexkeep-footer img {
+    height: 30px; /* Adjust logo height as needed for footer visibility */
+    margin-right: 0.5rem; /* Space between logo and text */
+    vertical-align: middle; /* Align logo with text vertically */
+}
+
+/* Footer Navigation Links (Privacy Policy, Terms, Contact) */
+.vortexkeep-footer ul {
+    list-style: none; /* Remove bullet points from list */
+    padding-left: 0; /* Remove default padding from list */
+    margin-bottom: 0; /* Remove default margin from list */
+}
+
+.vortexkeep-footer ul li {
+    display: inline-block; /* Display list items inline for horizontal layout */
+}
+
+.vortexkeep-footer ul li.ms-3:first-child {
+    margin-left: 0 !important; /* Remove left margin for the first link if using ms-3 */
+}
+
+.vortexkeep-footer ul li a {
+    /* Change this color for better visibility on the medium-dark grey background */
+    color: var(--vortexkeep-accent-bright); /* Option 1: Make them your bright green, consistent with header links */
+    /* color: var(--vortexkeep-text-on-dark); */ /* Option 2: Make them white/light grey if you prefer less green */
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.vortexkeep-footer ul li a:hover {
+    /* If default is green, hover could be white/light grey for distinction */
+    color: var(--vortexkeep-text-on-dark); 
+    /* If default is white, hover could be green */
+    /* color: var(--vortexkeep-accent-bright); */
+    text-decoration: underline;
+}
