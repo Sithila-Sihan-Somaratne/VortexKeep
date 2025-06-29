@@ -13,6 +13,15 @@
         <div class="py-3">
           <form [formGroup]="signupForm" (ngSubmit)="onSignupSubmit()">
             <div class="mb-3">
+              <label for="signupUserName" class="form-label">Username</label>
+              <input type="text" class="form-control" id="signupUserName" formControlName="username" aria-describedby="signupUserNameHelp">
+              <div *ngIf="signupForm.get('username')?.invalid && (signupForm.get('username')?.dirty || signupForm.get('username')?.touched)" class="text-danger mt-1">
+                <div *ngIf="signupForm.get('username')?.errors?.['required']">Username is required.</div>
+                <div *ngIf="signupForm.get('username')?.errors?.['minlength']">Username must be at least 3 characters.</div>
+              </div>
+            </div>
+
+            <div class="mb-3">
               <label for="signupEmail" class="form-label">Email address</label>
               <input type="email" class="form-control" id="signupEmail" formControlName="email" aria-describedby="signupEmailHelp">
               <div *ngIf="signupForm.get('email')?.invalid && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)" class="text-danger mt-1">
@@ -20,6 +29,7 @@
                 <div *ngIf="signupForm.get('email')?.errors?.['email']">Please enter a valid email address.</div>
               </div>
             </div>
+
             <div class="mb-3">
               <label for="signupPassword" class="form-label">Password</label>
               <div class="input-group">
@@ -27,12 +37,24 @@
                 <button class="btn btn-outline-secondary" type="button" (click)="togglePasswordVisibility()">
                   <fa-icon [icon]="passwordVisible ? faEyeSlash : faEye"></fa-icon>
                 </button>
+                <button class="btn btn-outline-secondary" type="button" (click)="generatePassword()" title="Generate Strong Password">
+                  <fa-icon [icon]="faCopy"></fa-icon> Generate
+                </button>
               </div>
               <div *ngIf="signupForm.get('password')?.invalid && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched)" class="text-danger mt-1">
                 <div *ngIf="signupForm.get('password')?.errors?.['required']">Password is required.</div>
-                <div *ngIf="signupForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters long.</div>
+                <div *ngIf="signupForm.get('password')?.errors?.['strongPassword']">
+                  Password must contain:
+                  <ul>
+                    <li *ngIf="!signupForm.get('password')?.errors?.['strongPassword']?.hasUpperCase">An uppercase letter</li>
+                    <li *ngIf="!signupForm.get('password')?.errors?.['strongPassword']?.hasLowerCase">A lowercase letter</li>
+                    <li *ngIf="!signupForm.get('password')?.errors?.['strongPassword']?.hasNumeric">A number</li>
+                    <li *ngIf="!signupForm.get('password')?.errors?.['strongPassword']?.hasSpecialChar">A special character (!&#64;#$...)</li>
+                  </ul>
+                </div>
               </div>
             </div>
+
             <div class="mb-3">
               <label for="confirmPassword" class="form-label">Confirm Password</label>
               <input [type]="passwordVisible ? 'text' : 'password'" class="form-control" id="confirmPassword" formControlName="confirmPassword">
@@ -43,6 +65,7 @@
                 Passwords do not match.
               </div>
             </div>
+
             <button type="submit" class="btn btn-primary w-100" [disabled]="signupForm.invalid">Sign Up</button>
             <p class="text-center mt-3 mb-0 text-muted small">Already have an account? <a href="javascript:void(0)" (click)="selectTab('login')">Login here</a></p>
           </form>
