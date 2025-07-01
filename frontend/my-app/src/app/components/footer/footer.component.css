@@ -4,6 +4,7 @@
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow pointing upwards */
     position: relative; /* Ensures shadow is visible */
     z-index: 10; /* Ensures footer is above other content, if any overlap */
+    margin: 0 !important;
 }
 
 /* Adjust general text within footer if specific elements don't pick up default color */

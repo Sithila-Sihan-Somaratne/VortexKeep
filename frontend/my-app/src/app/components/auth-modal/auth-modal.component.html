@@ -66,7 +66,7 @@
               </div>
             </div>
 
-            <button type="submit" class="btn btn-primary w-100" [disabled]="signupForm.invalid">Sign Up</button>
+            <button type="submit" class="btn btn-primary w-100 fw-bold" [disabled]="signupForm.invalid">Sign Up</button>
             <p class="text-center mt-3 mb-0 text-muted small">Already have an account? <a href="javascript:void(0)" (click)="selectTab('login')">Login here</a></p>
           </form>
         </div>
@@ -97,7 +97,7 @@
                 <div *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</div>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">Login</button>
+            <button type="submit" class="btn btn-primary w-100 fw-bold" [disabled]="loginForm.invalid">Login</button>
             <p class="text-center mt-3 mb-0 text-muted small">Don't have an account? <a href="javascript:void(0)" (click)="selectTab('signup')">Sign up here</a></p>
             <p class="text-center mt-2 mb-0 text-muted small"><a href="javascript:void(0)">Forgot Password?</a></p>
           </form>

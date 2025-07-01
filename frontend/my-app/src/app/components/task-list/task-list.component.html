@@ -1,0 +1,101 @@
+<div class="card shadow-lg border-0 rounded-4 custom-card-width">
+    <div class="card-header bg-white text-dark py-3 px-4 rounded-top-4 border-0">
+        <h2 class="mb-0 fs-4 fw-bold text-center">To-Do List 📝</h2>
+    </div>
+    <div class="card-body p-4">
+        <form (ngSubmit)="addTask()" class="mb-4 needs-validation" novalidate>
+            <div class="input-group input-group-lg">
+                <input type="text" class="form-control rounded-start-pill ps-4 py-2" id="newTaskTitle"
+                    placeholder="Add your text" [(ngModel)]="newTaskTitle" name="newTaskTitle" required
+                    [class.is-invalid]="!newTaskTitle.trim() && isAddingTask" />
+                <button type="submit" class="btn rounded-end-pill px-4 fw-bold" [disabled]="isAddingTask">
+                    <span *ngIf="isAddingTask" class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
+                    {{ isAddingTask ? 'Adding...' : 'Add' }}
+                </button>
+            </div>
+            <div class="invalid-feedback d-block mt-1" *ngIf="!newTaskTitle.trim() && isAddingTask">
+                Task title is required.
+            </div>
+        </form>
+
+        <hr class="my-4 border-2 opacity-75 custom-hr-style" />
+
+        <div *ngIf="isLoadingTasks" class="text-center py-5">
+            <fa-icon [icon]="faSpinner" [animation]="'spin-pulse'" size="3x" class="text-primary"></fa-icon>
+            <p class="mt-3 text-muted">Loading tasks...</p>
+        </div>
+
+        <div *ngIf="!isLoadingTasks && (tasks$ | async)?.length === 0" class="text-center text-muted py-5">
+            <p class="fs-5">🎉 No tasks found. Time to add your first one!</p>
+        </div>
+
+        <ul class="list-group list-group-flush animated-list">
+            <li *ngFor="let task of (tasks$ | async)"
+                class="list-group-item d-flex justify-content-between align-items-center py-2 px-0 border-0"
+                [class.completed-item]="task.completed" [class.faded-out]="loadingTaskId === task.id">
+                <ng-container *ngIf="editingTaskId !== task.id; else editMode">
+                    <div class="d-flex align-items-center flex-grow-1">
+                        <div class="form-check me-3">
+                            <input class="form-check-input custom-checkbox" type="checkbox" [checked]="task.completed"
+                                (change)="toggleTaskCompletion(task)" [id]="'task-' + task.id"
+                                [disabled]="loadingTaskId === task.id" />
+                        </div>
+                        <span class="task-title" [class.completed-text]="task.completed">{{ task.title }}</span>
+                    </div>
+                    <div class="d-flex align-items-center flex-shrink-0 ms-auto">
+                        <button class="btn btn-sm btn-link text-primary p-0 me-2" (click)="editTask(task)" title="Edit Task" [disabled]="loadingTaskId === task.id">
+                            <fa-icon [icon]="faPen"></fa-icon>
+                        </button>
+                        <button class="btn btn-sm btn-link text-danger ms-auto p-0" (click)="confirmDelete(deleteConfirmationModal, task)" title="Delete Task" [disabled]="loadingTaskId === task.id">
+                            <span *ngIf="loadingTaskId === task.id" class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                            <fa-icon *ngIf="loadingTaskId !== task.id" [icon]="faTrash"></fa-icon>
+                        </button>
+                    </div>
+                </ng-container>
+
+                <ng-template #editMode>
+                    <div class="w-100">
+                        <div class="mb-2">
+                            <input type="text" class="form-control form-control-sm" [(ngModel)]="editedTaskTitle"
+                                name="editedTaskTitle" required placeholder="Task Title"
+                                [class.is-invalid]="!editedTaskTitle.trim()" />
+                            <div class="invalid-feedback d-block" *ngIf="!editedTaskTitle.trim()">
+                                Title cannot be empty.
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <textarea class="form-control form-control-sm" [(ngModel)]="editedTaskDescription"
+                                name="editedTaskDescription" rows="2" placeholder="Description (optional)"></textarea>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-sm btn-success rounded-pill px-3 py-1 me-2" (click)="saveTask(task)"
+                                [disabled]="!editedTaskTitle.trim() || loadingTaskId === task.id" title="Save Changes">
+                                <span *ngIf="loadingTaskId === task.id" class="spinner-border spinner-border-sm me-1"
+                                    aria-hidden="true"></span>
+                                <fa-icon *ngIf="loadingTaskId !== task.id" [icon]="faCheck"></fa-icon> Save
+                            </button>
+                            <button class="btn btn-sm btn-secondary rounded-pill px-3 py-1" (click)="cancelEdit()"
+                                title="Cancel Edit" [disabled]="loadingTaskId === task.id">
+                                <fa-icon [icon]="faTimes"></fa-icon> Cancel
+                            </button>
+                        </div>
+                    </div>
+                </ng-template>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<ng-template #deleteConfirmationModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title">Confirm Deletion</h4>
+    <button type="button" class="btn-close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    Are you sure you want to delete the task: "<strong>{{ taskToDelete?.title }}</strong>"? This action cannot be undone.
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="deleteConfirmed()">Delete</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+  </div>
+</ng-template>

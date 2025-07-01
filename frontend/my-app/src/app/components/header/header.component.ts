@@ -1,41 +1,56 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap'; // <-- Import NgbModal
-import { AuthModalComponent } from '../auth-modal/auth-modal.component'; // <-- Import your SignupModalComponent
+import { Component, OnInit } from '@angular/core';
+import { NgbModal, NgbCollapseModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap'; // <<< Add NgbCollapseModule, NgbDropdownModule
+import { AuthModalComponent } from '../auth-modal/auth-modal.component';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+
+// Import SharedModule (ensure it exports CommonModule, RouterLink, RouterLinkActive if you rely on it)
+import { SharedModule } from '../../shared/shared.module';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [
-    CommonModule,
-    RouterLink,
-    RouterLinkActive,
-    NgbModule
+    SharedModule, // SharedModule likely provides CommonModule, RouterLink, RouterLinkActive
+    NgbCollapseModule, // <<< Add this
+    NgbDropdownModule // <<< Add this
   ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   isNavbarCollapsed = true;
+  isLoggedIn$!: Observable<boolean>;
 
-  // Inject the NgbModal service
-  constructor(private modalService: NgbModal) {}
+  constructor(
+    private modalService: NgbModal,
+    public authService: AuthService,
+    private router: Router
+  ) {}
 
-  // Method to open the signup modal
-  openAuthModal(initialTab: 'login' | 'signup') { 
+  ngOnInit(): void {
+    this.isLoggedIn$ = this.authService.isLoggedIn$;
+  }
+
+  openAuthModal(mode: 'login' | 'signup') {
     const modalRef = this.modalService.open(AuthModalComponent, {
       centered: true,
       size: 'md',
       backdrop: 'static',
       keyboard: false
     });
-    modalRef.componentInstance.activeTab = initialTab;
+    modalRef.componentInstance.activeTab = mode;
 
     modalRef.result.then((result) => {
       console.log('Modal closed with:', result);
     }, (reason) => {
       console.log('Modal dismissed with:', reason);
     });
+  }
+
+  onLogout(): void {
+    this.authService.logout();
+    this.router.navigate(['/']); // Assuming AuthService doesn't handle navigation on its own, or you want to explicitly override
   }
 }

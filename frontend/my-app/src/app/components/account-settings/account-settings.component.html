@@ -1,0 +1,19 @@
+<div class="account-settings-container">
+  <h2>Your Account Settings</h2>
+
+  <div *ngIf="errorMessage" class="error-message">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <div *ngIf="protectedData.user">
+    <h3>Profile Information</h3>
+    <p><strong>Message:</strong> {{ protectedData.message }}</p>
+    <p><strong>Authenticated User ID:</strong> {{ protectedData.user.id }}</p>
+    <p><strong>Authenticated Username:</strong> {{ protectedData.user.username }}</p>
+    <p><strong>Authenticated Email:</strong> {{ protectedData.user.email }}</p>
+    <p *ngIf="protectedData.data"><strong>Special Data:</strong> {{ protectedData.data }}</p>
+  </div>
+  <div *ngIf="!protectedData.user && !errorMessage">
+    <p>Loading account data...</p>
+  </div>
+</div>

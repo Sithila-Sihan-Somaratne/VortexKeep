@@ -1,27 +1,46 @@
-<nav class="navbar navbar-expand-lg fixed-top vortexkeep-header">
-    <div class="container-fluid">
-        <a class="navbar-brand" routerLink="/">
-            <img [src]="'vortexkeep-logo-with-text.png'" alt="VortexKeep Logo" height="30">
-        </a>
-        <button class="navbar-toggler" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed"
-            aria-controls="navbarNav" aria-expanded="!isNavbarCollapsed" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" [ngbCollapse]="isNavbarCollapsed" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/about" routerLinkActive="active">About VortexKeep</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/how-it-works" routerLinkActive="active">How VortexKeep works</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/why-use" routerLinkActive="active">Why use VortexKeep</a>
-                </li>
-                <li class="nav-item">
-                    <button class="btn btn-try-vortexkeep fw-bold" (click)="openAuthModal('signup')">Authenticate now!</button>
-                </li>
-            </ul>
-        </div>
+<nav class="navbar navbar-expand-xl fixed-top vortexkeep-header">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">
+      <img [src]="'vortexkeep-logo-with-text.png'" alt="VortexKeep Logo" height="30">
+    </a>
+    <button class="navbar-toggler" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed"
+      aria-controls="navbarNav" [attr.aria-expanded]="!isNavbarCollapsed" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" [ngbCollapse]="isNavbarCollapsed" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about" routerLinkActive="active">About VortexKeep</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/how-it-works" routerLinkActive="active">How VortexKeep works</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/why-use" routerLinkActive="active">Why use VortexKeep</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/todo" routerLinkActive="active">Try VortexKeep</a>
+        </li>
+
+        <ng-container *ngIf="!(isLoggedIn$ | async)">
+          <li class="nav-item">
+            <button class="btn btn-try-vortexkeep fw-bold" (click)="openAuthModal('signup')">Authenticate now!</button>
+          </li>
+        </ng-container>
+
+        <ng-container *ngIf="isLoggedIn$ | async">
+          <li class="nav-item" ngbDropdown>
+            <button class="btn btn-primary fw-bold" id="dropdownProfile" ngbDropdownToggle>
+              Welcome, {{ authService.username$ | async }}! </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownProfile">
+              <button ngbDropdownItem routerLink="/dashboard">Dashboard</button>
+              <button ngbDropdownItem routerLink="/account-settings">Account Settings</button>
+              <div class="dropdown-divider"></div>
+              <button ngbDropdownItem (click)="onLogout()">Log out</button>
+            </div>
+          </li>
+        </ng-container>
+      </ul>
     </div>
+  </div>
 </nav>

@@ -7,6 +7,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { faEye, faEyeSlash, faCircle } from '@fortawesome/free-solid-svg-icons';
+import { SharedModule } from './shared/shared.module';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ import { faEye, faEyeSlash, faCircle } from '@fortawesome/free-solid-svg-icons';
     RouterOutlet,
     HeaderComponent,
     FooterComponent,
-    FontAwesomeModule
+    SharedModule
 ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

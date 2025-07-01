@@ -5,7 +5,7 @@ html, body {
     font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
-app-root {
+body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -29,11 +29,6 @@ app-root {
     --vortexkeep-text-on-dark: #F0F0F0;
     --vortexkeep-header-height: 60px;
     --vortexkeep-footer-height: 100px;
-}
-
-/* --- Bootstrap Overrides --- */
-.bg-dark {
-    background-color: var(--vortexkeep-dominant-dark) !important; 
 }
 
 .btn-primary {
@@ -129,4 +124,8 @@ a{
 .vortexkeep-home-hero h1 {
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
+}
+
+.toast-container {
+  z-index: 999999 !important; /* An extremely high z-index */
 }

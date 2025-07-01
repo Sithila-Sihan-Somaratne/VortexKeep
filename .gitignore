@@ -2,7 +2,7 @@
 
 # Node.js / Express Backend
 /backend/node_modules/
-/backend/.env
+.env
 /backend/npm-debug.log*
 /backend/.env # Important: keep environment variables out of git!
 /backend/dist/ # If your backend builds anything to a dist folder

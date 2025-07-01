@@ -1,18 +1,14 @@
 // src/app/components/to-do/to-do.component.ts
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router'; // Ensure RouterLink is imported if used
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'; // Keep if you use FA icons here
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'; // <-- Import NgbModal
 import { AuthModalComponent } from '../auth-modal/auth-modal.component'; // <-- Import your SignupModalComponent
+import { SharedModule } from '../../shared/shared.module';
 
 @Component({
   selector: 'app-to-do',
   standalone: true,
   imports: [
-    CommonModule,
-    RouterLink,
-    FontAwesomeModule // Keep if you use FA icons here
+    SharedModule
   ],
   templateUrl: './to-do.component.html',
   styleUrls: ['./to-do.component.css']

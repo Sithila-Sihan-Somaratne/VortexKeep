@@ -1,0 +1,125 @@
+/* General Card Styling */
+.custom-card-width {
+    max-width: 500px; /* Adjust as needed for desired width */
+    margin: 50px auto; /* Center the card horizontally, add top margin */
+}
+
+/* Card Header - Simpler look */
+.card-header {
+    background-color: white !important; /* White background */
+    border-bottom: none !important; /* Remove border */
+}
+
+.card-header h2 {
+    color: #1B263B; /* Changed to --vortexkeep-dominant-dark */
+    font-size: 1.5rem; /* Smaller heading */
+}
+
+/* Custom Horizontal Rule */
+.custom-hr-style {
+    border-color: #eee !important; /* Lighter border color */
+    border-width: 1px !important;
+}
+
+/* Input Group Styling */
+.input-group-lg .form-control,
+.input-group-lg .btn {
+    height: 3rem; /* Make input and button consistent height */
+    padding: 0.5rem 1.5rem; /* Adjust padding */
+}
+
+.form-control.rounded-start-pill {
+    border-top-left-radius: 2rem !important; /* More rounded */
+    border-bottom-left-radius: 2rem !important; /* More rounded */
+    border-right: none; /* No border between input and button */
+}
+
+.btn.rounded-end-pill {
+    background-color: #1B263B !important; /* Red 'Add' button */
+    border-color: #1B263B !important;
+    color: #7FFF00;
+    border-top-right-radius: 2rem !important; /* More rounded */
+    border-bottom-right-radius: 2rem !important; /* More rounded */
+}
+
+.btn.rounded-end-pill:hover {
+    background-color: #162031 !important;
+    border-color: #162031 !important;
+}
+
+/* Task List Items */
+.list-group-item {
+    background-color: transparent !important; /* Transparent background */
+    border-color: #eee !important; /* Lighter border between items */
+    padding-left: 0 !important; /* Remove padding left */
+    padding-right: 0 !important; /* Remove padding right */
+}
+
+.list-group-item:last-child {
+    border-bottom: none !important; /* No border for the last item */
+}
+
+/* Custom Checkbox (adjust as needed to match image) */
+.form-check-input.custom-checkbox {
+    width: 1.25em;
+    height: 1.25em;
+    border-radius: 50% !important; /* Make it circular */
+    border: 2px solid #ccc;
+    cursor: pointer;
+    margin-top: 0.15em; /* Align vertically */
+}
+
+.form-check-input.custom-checkbox:checked {
+    background-color: #7FFF00; /* Changed to --vortexkeep-accent-bright (green) when checked */
+    border-color: #7FFF00; /* Changed to --vortexkeep-accent-bright (green) */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e") !important;
+}
+
+.task-title {
+    font-size: 1.1rem;
+    flex-grow: 1; /* Allow title to take available space */
+    color: #666666; /* Task title is now green */
+}
+
+.task-title.completed-text {
+    text-decoration: line-through;
+    color: #666666; /* Changed to --vortexkeep-secondary-text */
+}
+
+/* Edit button (the 'pen' icon) */
+.list-group-item .btn-link.text-primary {
+    font-size: 1.2rem;
+    color: #1B263B !important; /* Changed to --vortexkeep-dominant-dark */
+    transition: color 0.2s ease-in-out;
+}
+.list-group-item .btn-link.text-primary:hover {
+    color: #405de6 !important; /* You can adjust this to another accent if desired, or keep a default blue */
+}
+
+
+/* Delete button (the 'x' icon) */
+.list-group-item .btn-link.text-danger { /* Added .text-danger to be specific */
+    font-size: 1.2rem; /* Larger 'x' icon */
+    color: #1B263B !important; /* Changed to --vortexkeep-dominant-dark */
+    transition: color 0.2s ease-in-out;
+}
+
+.list-group-item .btn-link.text-danger:hover {
+    color: #162031 !important; 
+}
+
+/* Fade out effect for loading items */
+.faded-out {
+    opacity: 0.5;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Remove border from custom validation */
+.form-control.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(27, 38, 59, 0.25); /* Blue focus shadow */
+    border-color: #1B263B;
+}

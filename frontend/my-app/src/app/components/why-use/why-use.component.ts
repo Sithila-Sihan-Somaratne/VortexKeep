@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SharedModule } from '../../shared/shared.module';
 
 @Component({
   selector: 'app-why-use',
   standalone: true,
-  imports: [RouterModule, FontAwesomeModule],
+  imports: [SharedModule],
   templateUrl: './why-use.component.html',
   styleUrl: './why-use.component.css'
 })

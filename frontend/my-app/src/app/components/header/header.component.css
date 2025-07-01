@@ -1,6 +1,5 @@
 .vortexkeep-header {
     background-color: var(--vortexkeep-secondary-text) !important; /* Header background changed to medium-dark grey */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for lift */
     z-index: 1020; /* Ensures header is above other content */
     padding-top: 0.5rem; /* Adjust padding as needed */
     padding-bottom: 0.5rem; /* Adjust padding as needed */
